@@ -11,54 +11,74 @@ import java.time.LocalDateTime;
 public class Cours {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String salle;
 
-    private String roomName;
+    private String matiere;
 
-    private String matiereName;
+    private String section;
 
-    private LocalDateTime debut;
+    private String groupe;
 
-    private LocalDateTime fin;
+    private LocalDateTime date_debut;
 
-    public Long getId() {
-        return id;
+    private LocalDateTime date_fin;
+
+    private String professeur;
+
+    public String getSalle() {
+        return salle;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setSalle(String salle) {
+        this.salle = salle;
     }
 
-    public String getRoomName() {
-        return roomName;
+    public String getMatiere() {
+        return matiere;
     }
 
-    public void setRoomName(String roomName) {
-        this.roomName = roomName;
+    public void setMatiere(String matiere) {
+        this.matiere = matiere;
     }
 
-    public String getMatiereName() {
-        return matiereName;
+    public String getSection() {
+        return section;
     }
 
-    public void setMatiereName(String matiereName) {
-        this.matiereName = matiereName;
+    public void setSection(String section) {
+        this.section = section;
+    }
+
+    public String getGroupe() {
+        return groupe;
+    }
+
+    public void setGroupe(String groupe) {
+        this.groupe = groupe;
     }
 
     public LocalDateTime getDebut() {
-        return debut;
+        return date_debut;
     }
 
-    public void setDebut(LocalDateTime debut) {
-        this.debut = debut;
+    public void setDebut(LocalDateTime date_debut) {
+        this.date_debut = date_debut;
     }
 
     public LocalDateTime getFin() {
-        return fin;
+        return date_fin;
     }
 
-    public void setFin(LocalDateTime fin) {
-        this.fin = fin;
+    public void setFin(LocalDateTime date_fin) {
+        this.date_fin = date_fin;
+    }
+
+    public String getProfesseur() {
+        return professeur;
+    }
+
+    public void setProfesseur(String professeur) {
+        this.professeur = professeur;
     }
 }

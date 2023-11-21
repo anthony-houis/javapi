@@ -33,10 +33,13 @@ public class CoursRestController {
         }
 
         Cours c = new Cours();
+        c.setProfesseur(addCoursRequest.getProfesseur());
         c.setDebut(addCoursRequest.getDebut());
         c.setFin(addCoursRequest.getFin());
-        c.setMatiereName(addCoursRequest.getMatiereName());
-        c.setRoomName(addCoursRequest.getRoomName());
+        c.setSection(addCoursRequest.getSection());
+        c.setGroupe(addCoursRequest.getGroupe());
+        c.setMatiere(addCoursRequest.getMatiere());
+        c.setSalle(addCoursRequest.getSalle());
 
         coursRepository.save(c);
 
@@ -50,11 +53,11 @@ public class CoursRestController {
     }
 
     private void checkRequiredField(AddCoursRequest addCoursRequest) throws NullOrEmptyException {
-        if(!StringUtils.hasText(addCoursRequest.getMatiereName())){
+        if(!StringUtils.hasText(addCoursRequest.getMatiere())){
             throw new NullOrEmptyException("MatiereName ne peut être null ou vide");
         }
 
-        if(!StringUtils.hasText(addCoursRequest.getRoomName())){
+        if(!StringUtils.hasText(addCoursRequest.getSalle())){
             throw new NullOrEmptyException("RoomNme ne peut être null ou vide");
         }
 
