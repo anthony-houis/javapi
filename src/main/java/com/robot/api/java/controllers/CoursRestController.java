@@ -34,9 +34,9 @@ public class CoursRestController {
     @GetMapping("/getCours/")
     public ResponseEntity<List<Cours>> getCours(@RequestParam String groupe,
                                                 @RequestParam String section,
-                                                @RequestParam LocalDateTime date_debut
+                                                @RequestParam LocalDateTime dateDebut
     ) {
-        List<Cours> list = coursRepository.findByGroupeAndSectionAndDateDebutGreaterThan(groupe, section, date_debut);
+        List<Cours> list = coursRepository.findByGroupeAndSectionAndDateDebutGreaterThan(groupe, section, dateDebut);
         return ResponseEntity.ok(list);
     }
 
@@ -50,8 +50,8 @@ public class CoursRestController {
 
         Cours c = new Cours();
         c.setProfesseur(addCoursRequest.getProfesseur());
-        c.setDebut(addCoursRequest.getDebut());
-        c.setFin(addCoursRequest.getFin());
+        c.setDateDebut(addCoursRequest.getDateDebut());
+        c.setDateFin(addCoursRequest.getDateFin());
         c.setSection(addCoursRequest.getSection());
         c.setGroupe(addCoursRequest.getGroupe());
         c.setMatiere(addCoursRequest.getMatiere());
@@ -77,11 +77,11 @@ public class CoursRestController {
             throw new NullOrEmptyException("RoomNme ne peut être null ou vide");
         }
 
-        if(addCoursRequest.getDebut() == null){
+        if(addCoursRequest.getDateDebut() == null){
             throw new NullOrEmptyException("Debut ne peut être null ou vide");
         }
 
-        if(addCoursRequest.getFin() == null){
+        if(addCoursRequest.getDateFin() == null){
             throw new NullOrEmptyException("Fin ne peut être null ou vide");
         }
     }

@@ -12,9 +12,9 @@ public class AddCoursRequest {
 
     private String groupe;
 
-    private LocalDateTime date_debut;
+    private LocalDateTime dateDebut;
 
-    private LocalDateTime date_fin;
+    private LocalDateTime dateFin;
 
     private String professeur;
 
@@ -50,20 +50,20 @@ public class AddCoursRequest {
         this.groupe = groupe;
     }
 
-    public LocalDateTime getDebut() {
-        return date_debut;
+    public LocalDateTime getDateDebut() {
+        return dateDebut;
     }
 
-    public void setDebut(LocalDateTime date_debut) {
-        this.date_debut = date_debut;
+    public void setDateDebut(LocalDateTime dateDebut) {
+        this.dateDebut = dateDebut;
     }
 
-    public LocalDateTime getFin() {
-        return date_fin;
+    public LocalDateTime getDateFin() {
+        return dateFin;
     }
 
-    public void setFin(LocalDateTime date_fin) {
-        this.date_fin = date_fin;
+    public void setDateFin(LocalDateTime dateFin) {
+        this.dateFin = dateFin;
     }
 
     public String getProfesseur() {

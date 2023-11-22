@@ -59,19 +59,19 @@ public class Cours {
         this.groupe = groupe;
     }
 
-    public LocalDateTime getDebut() {
+    public LocalDateTime getDateDebut() {
         return dateDebut;
     }
 
-    public void setDebut(LocalDateTime dateDebut) {
+    public void setDateDebut(LocalDateTime dateDebut) {
         this.dateDebut = dateDebut;
     }
 
-    public LocalDateTime getFin() {
+    public LocalDateTime getDateFin() {
         return dateFin;
     }
 
-    public void setFin(LocalDateTime dateFin) {
+    public void setDateFin(LocalDateTime dateFin) {
         this.dateFin = dateFin;
     }
 
