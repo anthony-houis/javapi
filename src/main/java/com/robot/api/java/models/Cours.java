@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 public class Cours {
 
     @Id
+    @GeneratedValue
     private Long id;
     private String salle;
 

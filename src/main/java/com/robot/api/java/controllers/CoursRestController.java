@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -18,9 +19,15 @@ public class CoursRestController {
     @Autowired
     private CoursRepository coursRepository;
 
-    @GetMapping("/")
+    @GetMapping("/getAllCours")
     public ResponseEntity<List<Cours>> getAllCours() {
         List<Cours> list = coursRepository.findAll();
+        return ResponseEntity.ok(list);
+    }
+
+    @GetMapping("/getBySalle/{salle}")
+    public ResponseEntity<List<Cours>> getBySalle(@PathVariable() String salle) {
+        List<Cours> list = coursRepository.findBySalle(salle);
         return ResponseEntity.ok(list);
     }
 

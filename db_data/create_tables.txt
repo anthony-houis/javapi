@@ -33,6 +33,7 @@ create table professeurs(
 	);
 
 create table cours(
+	id mediumint not null AUTO_INCREMENT,
 	matiere varchar(255), 
 	salle varchar(255), 
 	section varchar(255), 
@@ -40,6 +41,7 @@ create table cours(
 	date_debut datetime, 
 	date_fin datetime, 
 	professeur varchar(255),
+	PRIMARY KEY (id),
 	foreign key (matiere) references matieres(name), 
 	foreign key (salle) references salles(name),
 	foreign key (section) references sections(name),
