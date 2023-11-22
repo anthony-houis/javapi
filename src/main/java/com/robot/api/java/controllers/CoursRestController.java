@@ -31,6 +31,15 @@ public class CoursRestController {
         return ResponseEntity.ok(list);
     }
 
+    @GetMapping("/getCours/")
+    public ResponseEntity<List<Cours>> getCours(@RequestParam String groupe,
+                                                @RequestParam String section,
+                                                @RequestParam LocalDateTime date_debut
+    ) {
+        List<Cours> list = coursRepository.findByGroupeAndSectionAndDateDebutGreaterThan(groupe, section, date_debut);
+        return ResponseEntity.ok(list);
+    }
+
     @PostMapping("/")
     public ResponseEntity<String> addAllCours(@RequestBody AddCoursRequest addCoursRequest) {
         try {

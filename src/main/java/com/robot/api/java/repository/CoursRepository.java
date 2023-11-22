@@ -9,4 +9,5 @@ import java.time.LocalDateTime;
 @Repository
 public interface CoursRepository extends JpaRepository<Cours, Long> {
     List<Cours> findBySalle(String salle);
+    List<Cours> findByGroupeAndSectionAndDateDebutGreaterThan(String groupe, String section, LocalDateTime date_debut);
 }
