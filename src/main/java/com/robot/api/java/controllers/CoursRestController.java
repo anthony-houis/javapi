@@ -31,7 +31,7 @@ public class CoursRestController {
         return ResponseEntity.ok(list);
     }
 
-    @GetMapping("/getCours/")
+    @GetMapping("/getCours")
     public ResponseEntity<List<Cours>> getCours(@RequestParam String groupe,
                                                 @RequestParam String section,
                                                 @RequestParam LocalDateTime dateDebut

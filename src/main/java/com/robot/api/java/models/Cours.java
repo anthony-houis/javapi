@@ -1,5 +1,6 @@
 package com.robot.api.java.models;
 
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,6 +22,7 @@ public class Cours {
 
     private String groupe;
 
+    @JsonFormat(pattern="dd-MM-yyyy")
     private LocalDateTime dateDebut;
 
     private LocalDateTime dateFin;
