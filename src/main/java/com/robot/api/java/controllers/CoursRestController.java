@@ -5,6 +5,7 @@ import com.robot.api.java.exceptions.NullOrEmptyException;
 import com.robot.api.java.models.Cours;
 import com.robot.api.java.repository.CoursRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -21,22 +22,22 @@ public class CoursRestController {
 
     @GetMapping("/getAllCours")
     public ResponseEntity<List<Cours>> getAllCours() {
-        List<Cours> list = coursRepository.findAll();
+        final List<Cours> list = coursRepository.findAll();
         return ResponseEntity.ok(list);
     }
 
     @GetMapping("/getBySalle/{salle}")
-    public ResponseEntity<List<Cours>> getBySalle(@PathVariable() String salle) {
-        List<Cours> list = coursRepository.findBySalle(salle);
+    public ResponseEntity<List<Cours>> getBySalle(@PathVariable() final String salle) {
+        final List<Cours> list = coursRepository.findBySalle(salle);
         return ResponseEntity.ok(list);
     }
 
     @GetMapping("/getCours")
-    public ResponseEntity<List<Cours>> getCours(@RequestParam String groupe,
-                                                @RequestParam String section,
-                                                @RequestParam LocalDateTime dateDebut
+    public ResponseEntity<List<Cours>> getCours(@RequestParam final String groupe,
+                                                @RequestParam final String section,
+                                                @RequestParam @DateTimeFormat(iso=DateTimeFormat.ISO.DATE_TIME) final LocalDateTime dateDebut
     ) {
-        List<Cours> list = coursRepository.findByGroupeAndSectionAndDateDebutGreaterThan(groupe, section, dateDebut);
+        final List<Cours> list = coursRepository.findByGroupeAndSectionAndDateDebutGreaterThanEqual(groupe, section, dateDebut);
         return ResponseEntity.ok(list);
     }
 
