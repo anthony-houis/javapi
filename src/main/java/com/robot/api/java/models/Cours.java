@@ -19,7 +19,7 @@ public class Cours {
 
     private String groupe;
 
-    @Column(name="datedebut")
+    @Column(name="date_debut")
     private LocalDateTime dateDebut;
 
     private LocalDateTime dateFin;
