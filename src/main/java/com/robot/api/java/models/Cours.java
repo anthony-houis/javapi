@@ -11,7 +11,7 @@ public class Cours {
     @Id
     @GeneratedValue
     private Long id;
-    private String salle;
+    public String salle;
 
     private String matiere;
 
