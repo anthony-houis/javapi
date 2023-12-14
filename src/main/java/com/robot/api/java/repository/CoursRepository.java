@@ -13,9 +13,9 @@ import java.time.LocalDateTime;
 @Repository
 public interface CoursRepository extends JpaRepository<Cours, Long> {
     List<Cours> findBySalle(String salle);
-    @Query(value="select * from cours where group= :groupe and section = :section and date_debut>= :date_debut", nativeQuery = true)
+    @Query(value="select * from cours where groupe= :groupe and section = :section and date_debut>= :date_debut", nativeQuery = true)
     List<Cours> findByGroupeAndSectionAndDate(@Param(value="groupe") String groupe, @Param(value="section") String section, @Param(value="date_debut") LocalDateTime date_debut);
-    @Query(value="select * from cours where group= :groupe and date_debut>= :date_debut", nativeQuery = true)
+    @Query(value="select * from cours where groupe= :groupe and date_debut>= :date_debut", nativeQuery = true)
     List<Cours> findAllCoursByGroupeAndDate(@Param(value="groupe") String groupe, @Param(value="date_debut") LocalDateTime date_debut);
     @Query(value="select * from cours where section = :section and date_debut>= :date_debut", nativeQuery = true)
     List<Cours> findAllCoursBySectionAndDate(@Param(value="section") String section, @Param(value="date_debut") LocalDateTime date_debut);

@@ -33,10 +33,10 @@ public class CoursRestController {
         return ResponseEntity.ok(list);
     }
 
-    @GetMapping("/getCours")
-    public ResponseEntity<List<Cours>> getCours(@RequestParam final String groupe,
-                                                @RequestParam final String section,
-                                                @RequestParam @DateTimeFormat(iso=DateTimeFormat.ISO.DATE_TIME) final LocalDateTime date_debut
+    @GetMapping("/getCours/{groupe}/{section}/{date_debut}")
+    public ResponseEntity<List<Cours>> getCours(@PathVariable final String groupe,
+                                                @PathVariable final String section,
+                                                @PathVariable final LocalDateTime date_debut
     ) {
         final List<Cours> list = coursRepository.findByGroupeAndSectionAndDate(groupe, section, date_debut);
         return ResponseEntity.ok(list);

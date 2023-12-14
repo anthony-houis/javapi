@@ -25,4 +25,7 @@ public interface SallesRepository extends JpaRepository<Salles, Long> {
 
     @Query(value="select name from salles where name not in (select salle from cours)", nativeQuery = true)
     List<String> findFreeSalles();
+
+    @Query(value="select salle from cours where date_fin>= :date and date_debut<= :date", nativeQuery = true)
+    List<String> findFreeSallesDate(@Param(value="date") LocalDateTime date);
 }

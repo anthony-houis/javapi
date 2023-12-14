@@ -43,9 +43,22 @@ public class SallesRestController {
         return ResponseEntity.ok(salles);
     }
 
+    @GetMapping("/getFreeSalles/{heure}")
+    public ResponseEntity<List<String>> getFreeSalles(@PathVariable String heure) {
+        LocalDateTime reqdate = LocalDateTime.parse("2023-11-16T"+heure);
+        List<String> salles = sallesRepository.findFreeSallesAM(reqdate);
+        return ResponseEntity.ok(salles);
+    }
+
     @GetMapping("/getFreeSalles")
     public ResponseEntity<List<String>> getFreeSallesAM() {
         List<String> salles = sallesRepository.findFreeSalles();
+        return ResponseEntity.ok(salles);
+    }
+
+    @GetMapping("/getFreeSallesDate/{date}")
+    public ResponseEntity<List<String>> getFreeSallesAM(@PathVariable LocalDateTime date) {
+        List<String> salles = sallesRepository.findFreeSallesDate(date);
         return ResponseEntity.ok(salles);
     }
 }
