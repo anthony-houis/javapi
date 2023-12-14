@@ -36,39 +36,39 @@ public class CoursRestController {
     @GetMapping("/getCours")
     public ResponseEntity<List<Cours>> getCours(@RequestParam final String groupe,
                                                 @RequestParam final String section,
-                                                @RequestParam @DateTimeFormat(iso=DateTimeFormat.ISO.DATE_TIME) final LocalDateTime dateDebut
+                                                @RequestParam @DateTimeFormat(iso=DateTimeFormat.ISO.DATE_TIME) final LocalDateTime date_debut
     ) {
-        final List<Cours> list = coursRepository.findByGroupeAndSectionAndDateDebutGreaterThanEqual(groupe, section, dateDebut);
+        final List<Cours> list = coursRepository.findByGroupeAndSectionAndDate(groupe, section, date_debut);
         return ResponseEntity.ok(list);
     }
 
     @GetMapping("/getCoursByGroupe")
     public ResponseEntity<List<Cours>> getCoursByGroupe(@RequestParam final String groupe,
-                                                        @RequestParam @DateTimeFormat(iso=DateTimeFormat.ISO.DATE_TIME) final LocalDateTime dateDebut) {
+                                                        @RequestParam @DateTimeFormat(iso=DateTimeFormat.ISO.DATE_TIME) final LocalDateTime date_debut) {
 
-        final List<Cours> list = coursRepository.findAllCoursByGroupeAndDateDebutGreaterThanEqual(groupe, dateDebut);
+        final List<Cours> list = coursRepository.findAllCoursByGroupeAndDate(groupe, date_debut);
         return ResponseEntity.ok(list);
     }
 
     @GetMapping("/getCoursBySection")
     public ResponseEntity<List<Cours>> getCoursBySection(@RequestParam final String section,
-                                                        @RequestParam @DateTimeFormat(iso=DateTimeFormat.ISO.DATE_TIME) final LocalDateTime dateDebut) {
+                                                        @RequestParam @DateTimeFormat(iso=DateTimeFormat.ISO.DATE_TIME) final LocalDateTime date_debut) {
 
-        final List<Cours> list = coursRepository.findAllCoursBySectionAndDateDebutGreaterThanEqual(section, dateDebut);
+        final List<Cours> list = coursRepository.findAllCoursBySectionAndDate(section, date_debut);
         return ResponseEntity.ok(list);
     }
 
     @GetMapping("/getCoursByProfesseurs")
     public ResponseEntity<List<Cours>> getCoursByProfesseurs(@RequestParam final String name,
-                                                         @RequestParam @DateTimeFormat(iso=DateTimeFormat.ISO.DATE_TIME) final LocalDateTime dateDebut) {
+                                                         @RequestParam @DateTimeFormat(iso=DateTimeFormat.ISO.DATE_TIME) final LocalDateTime date_debut) {
 
-        final List<Cours> list = coursRepository.findAllCoursByProfesseurAndDateDebutGreaterThanEqual(name, dateDebut);
+        final List<Cours> list = coursRepository.findAllCoursByProfesseurAndDate(name, date_debut);
         return ResponseEntity.ok(list);
     }
 
     @GetMapping("/getSalles")
-    public ResponseEntity<List<Cours>> getSalles(@RequestParam @DateTimeFormat(iso=DateTimeFormat.ISO.DATE_TIME) final LocalDateTime dateDebut) {
-        final List<Cours> list = coursRepository.findCoursSallesByDateDebut(dateDebut);
+    public ResponseEntity<List<Cours>> getSalles(@RequestParam @DateTimeFormat(iso=DateTimeFormat.ISO.DATE_TIME) final LocalDateTime date_debut) {
+        final List<Cours> list = coursRepository.findCoursSallesByDate(date_debut);
         return ResponseEntity.ok(list);
     }
 

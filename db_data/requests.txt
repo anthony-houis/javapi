@@ -1,0 +1,48 @@
+consultation d'emploi du temps étudiant
+    connexion à l'API Partage, ou une BD factice
+    requête par formation/groupe/enseignant/salle
+    retourne les cours suivant dans la 1/2 journée entamée avec affichage
+    
+    ---select la matiere des cours qui commencent entre 13h et 16h
+    select matiere from cours where date_debut>='2023-11-16 13:00:00' and date_fin<='2023-11-16 19:00:00'
+
+consultation occupation salles libre-service
+    connexion à l'API Partage, ou une BD factice
+    requête optionnelle par date/heure
+    retourne une salle sans cours affecté pour la date/heure demandée, sinon maintenant
+    
+    ---select les salles dont les cours finissent avant ou a 13h
+    select distinct salle from cours where date_fin<='2023-11-16 13:00:00';
+    curl http://10.0.2.15:8085/salles/getFreeSallesPM/2023-11-16
+    ---select les salles auxquelles aucun cours n'est affecte
+    select name from salles where name not in (select salle from cours);
+    ---select les salles libres après 13h
+    select distinct salle from cours where date_fin<='2023-11-16 13:00:00' union select name from salles where name not in (select salle from cours);
+    curl http://10.0.2.15:8085/salles/getFreeSallesPM/2023-11-16
+
+orientation batiment
+    connexion à BD : liste des salles avec descriptif (dont un plan d'accès)
+    requête par salle
+    retourne la route depuis le hall de la salle avec affichage du plan correspondant
+    
+    ---select les salles selon le site
+    select name from salles where site ="";
+    curl http://10.0.2.15:8085/salles/getBySite/ceri
+    ---select le site selon la salle
+    select site from salles where
+    curl http://10.0.2.15:8085/salles/getSiteBySalle/c138
+
+texter prof
+    connexion à BD : liste des enseignants avec contacts
+    requête par nom/cours
+    retourne confirmation envoi d'un sms avec le message dicté
+    
+    ---select le contact du prof selon son nom
+    select contact from professeurs where nom="";
+    curl http://10.0.2.15:8085/professeurs/getByName/bernard
+    ---select le contact du prof selon la matiere du cours
+    select professeur.contact from professeur, cours where professeur.name = cours.name_professeur and cours.matiere = "";
+    curl http://10.0.2.15:8085/professeurs/getByCours/microbiologie
+
+
+

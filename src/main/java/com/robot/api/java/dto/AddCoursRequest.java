@@ -12,9 +12,9 @@ public class AddCoursRequest {
 
     private String groupe;
 
-    private LocalDateTime dateDebut;
+    private LocalDateTime date_debut;
 
-    private LocalDateTime dateFin;
+    private LocalDateTime date_fin;
 
     private String professeur;
 
@@ -51,19 +51,19 @@ public class AddCoursRequest {
     }
 
     public LocalDateTime getDateDebut() {
-        return dateDebut;
+        return date_debut;
     }
 
-    public void setDateDebut(LocalDateTime dateDebut) {
-        this.dateDebut = dateDebut;
+    public void setDateDebut(LocalDateTime date_debut) {
+        this.date_debut = date_debut;
     }
 
     public LocalDateTime getDateFin() {
-        return dateFin;
+        return date_fin;
     }
 
-    public void setDateFin(LocalDateTime dateFin) {
-        this.dateFin = dateFin;
+    public void setDateFin(LocalDateTime date_fin) {
+        this.date_fin = date_fin;
     }
 
     public String getProfesseur() {
