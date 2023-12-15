@@ -3,7 +3,6 @@ package com.robot.api.java.controllers;
 import com.robot.api.java.dto.AddCoursRequest;
 import com.robot.api.java.exceptions.NullOrEmptyException;
 import com.robot.api.java.models.Cours;
-import com.robot.api.java.models.Salles;
 import com.robot.api.java.repository.CoursRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -11,8 +10,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import org.jsoup.Jsoup;
+import org.jsoup.safety.Whitelist;
+
+import javax.swing.text.Document;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.time.LocalDateTime;
 import java.util.List;
+
 
 @RestController
 @RequestMapping("/cours")
@@ -70,6 +77,36 @@ public class CoursRestController {
     public ResponseEntity<List<Cours>> getSalles(@RequestParam @DateTimeFormat(iso=DateTimeFormat.ISO.DATE_TIME) final LocalDateTime date_debut) {
         final List<Cours> list = coursRepository.findCoursSallesByDate(date_debut);
         return ResponseEntity.ok(list);
+    }
+
+    @GetMapping("/infoTitre")
+    public ResponseEntity<String> infoTitre() throws IOException {
+        Runtime r = Runtime.getRuntime();
+        Process p = r.exec("python3 " + "/home/javapi/rss.py");
+        BufferedReader in = new BufferedReader(
+                new InputStreamReader(p.getInputStream()));
+        String line = null;
+        String results = null;
+        while ((line = in .readLine()) != null) {
+            results = line;
+        }
+
+        return ResponseEntity.ok(results);
+    }
+
+    @GetMapping("/infoDetails")
+    public ResponseEntity<String> infoDetails() throws IOException {
+        Runtime r = Runtime.getRuntime();
+        Process p = r.exec("python3 " + "/home/javapi/rssDetails.py");
+        BufferedReader in = new BufferedReader(
+                new InputStreamReader(p.getInputStream()));
+        String line = null;
+        String results = null;
+        while ((line = in .readLine()) != null) {
+            results = line;
+        }
+
+        return ResponseEntity.ok(results);
     }
 
     @PostMapping("/")
